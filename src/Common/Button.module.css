@@ -1,0 +1,28 @@
+.yellow_button {
+    background-color: #F4E041;
+    width: 100px;
+    height: 34px;
+    border: none;
+    border-radius: 80px;
+
+}
+
+.typography {
+    font-size: 16px;
+}
+
+.yellow_button:hover {
+    background-color: #FFE302;
+
+}
+
+.yellow_button_disabled {
+    background-color: #B4B4B4;
+    width: 100px;
+    height: 34px;
+    border: none;
+    border-radius: 80px;
+
+
+    color: rgba(255, 255, 255, 0.87);
+}
