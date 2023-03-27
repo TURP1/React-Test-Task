@@ -22,9 +22,7 @@ function NewUserForm() {
         document.getElementById("file-name").textContent = fileName;
     };
 
-    const handleClick = () => {
-        fileInputRef.current.click();
-    };
+
 
 
 
@@ -61,7 +59,7 @@ function NewUserForm() {
             </div>
 
             <div className={s.custom_file_container}>
-                <label htmlFor="file-upload" className={s.custom_file_upload} onClick={handleClick}>
+                <label htmlFor="file-upload" className={s.custom_file_upload} >
                     <i className="fas fa-cloud-upload-alt"></i>Upload
                 </label>
                 <input
