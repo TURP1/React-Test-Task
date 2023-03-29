@@ -2,12 +2,14 @@
   height: 60px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
   padding: 0 16px;
   transition: padding-left 0.3s ease-in-out, padding-right 0.3s ease-in-out;
 }
-.buttons{
- 
+.buttons:first-child{
+ margin-right: 10px;
 }
 
 
