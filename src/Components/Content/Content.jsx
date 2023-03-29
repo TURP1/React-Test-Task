@@ -1,7 +1,10 @@
 import SectionHeader from "../../Common/SectionHeader";
 import Cards from "./Cards/Cards";
 import s from "./Content.module.css"
-import NewUserForm from "./Form/NewUserForm";
+import NewUserFormContainerConnected from "./Form/NewUserForm_Container";
+
+
+
 
 
 function Content() {
@@ -13,7 +16,7 @@ function Content() {
             </section>
             <section>
                 <SectionHeader section_name="Working with POST request"></SectionHeader>
-                <NewUserForm></NewUserForm>
+                <NewUserFormContainerConnected></NewUserFormContainerConnected>
             </section>
         </div>
 
