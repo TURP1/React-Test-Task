@@ -1,4 +1,12 @@
+.header_container{
+  height: 60px;
+  background-color: #fff;
+
+}
+
 .app_header{
+  max-width: 1170px;
+  margin: 0 auto;
   height: 60px;
   display: flex;
   flex-direction: row;

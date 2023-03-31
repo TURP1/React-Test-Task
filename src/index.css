@@ -10,11 +10,7 @@ body {
   font-family: 'Nunito-Regular';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background-color: #F8F8F8;
 }
 
 

@@ -1,5 +1,5 @@
 import SectionHeader from "../../Common/SectionHeader";
-import Cards from "./Cards/Cards";
+import CardsContainer from "./Cards/Cards";
 import s from "./Content.module.css"
 import NewUserFormContainerConnected from "./Form/NewUserForm_Container";
 
@@ -12,7 +12,7 @@ function Content() {
         <div className={s.content}>
             <section>
                 <SectionHeader section_name="Working with GET request"></SectionHeader>
-                <Cards></Cards>
+                <CardsContainer></CardsContainer>
             </section>
             <section>
                 <SectionHeader section_name="Working with POST request"></SectionHeader>

@@ -5,7 +5,6 @@ import { useRef } from "react";
 import ButtonYellow from "../../../Common/Button"
 import Radio from './Radio';
 
-let emailPattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
 
 

@@ -25,7 +25,14 @@ export const loginAPI = {
 export const profileAPI = {
     getUser(id) {
         return instance.get(`users/${id}`)
+    },
+    getUserList(page,count, offset = 0 ) {
+        return instance.get(`users?page=${page}&count=${count}&offset=${offset}`)
+    },
+    getNewUserList(url) {
+        return axios.get(url)
     }
+
 }
 
 

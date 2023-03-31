@@ -5,10 +5,15 @@ import MainContent from './Components/MainContent/MainContent';
 
 function App() {
   return (
-    <div className="App">
+    <div>
+      <div className="header">
       <Header></Header>
-      <MainContent></MainContent>
-      <Content></Content>
+      </div>
+      <div className="content">
+        <MainContent></MainContent>
+        <Content></Content>
+      </div>
+
     </div>
   );
 }

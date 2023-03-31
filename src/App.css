@@ -1,6 +1,9 @@
-.App{
+.content{
     max-width: 1170px;
     min-width: 360px;
     margin: 0 auto;
+}
+.header{
+    min-width: 360px;
 
 }

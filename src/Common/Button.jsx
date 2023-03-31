@@ -1,7 +1,9 @@
 import s from "./Button.module.css"
 // buttonName="Sign up" type="submit" state="disabled"
 function ButtonYellow(props) {
-
+    if (props.onClick){
+        
+    }
     if (props.type === "submit" && props.state === "disabled") {
         return (
             <button className={s.yellow_button_disabled + " " + props.className} type={props.type} disabled>
