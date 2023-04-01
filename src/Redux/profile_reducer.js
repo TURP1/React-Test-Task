@@ -79,7 +79,7 @@ export const getToken = () => {
         if (response.data.resultCode !== 1) {
             console.log(response);
             dispatch(setToken(response.data.token));
-            // dispatch(setAuth(true))
+
         };
     };
 }
@@ -90,7 +90,7 @@ export const getPositions = () => {
         if (response.data.resultCode !== 1) {
             console.log(response.data.positions);
             dispatch(setPositions(response.data.positions));
-            // dispatch(setAuth(true))
+
         };
     };
 }
