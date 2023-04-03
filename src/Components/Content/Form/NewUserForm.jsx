@@ -36,6 +36,8 @@ export const registerOptions = {
 function NewUserForm(props) {
 
     const [selectedFile, setSelectedFile] = useState(null);
+
+
     const {
         register,
         handleSubmit,
@@ -48,6 +50,7 @@ function NewUserForm(props) {
         console.log("rerender");
     }
 
+    console.log(errors);
 
 
     const handleFileInputChange = (event) => {
@@ -64,7 +67,7 @@ function NewUserForm(props) {
         <FormControlLabel
             key={position.id}
             value={position.id.toString()}
-            error={errors.position_id}
+            {...register('position_id')}
             control={
                 <Radio
                     sx={{
@@ -74,7 +77,6 @@ function NewUserForm(props) {
                         },
                     }}
                     size="small"
-                    {...register('position_id')}
                 />}
             label={
                 <Typography
@@ -92,22 +94,14 @@ function NewUserForm(props) {
         let element = document.querySelector(`#file_container`);
         let element2 = document.querySelector(`#file_button_container`);
         element.style.border = "1px solid #D0CFCF";
-        element2.style.outline = "none";
         element2.style.border = "1px solid rgba(0, 0, 0, 0.87)";
-
-
-
-
     }
 
     let fileErrorShow = () => {
         let element = document.querySelector(`#file_container`);
         let element2 = document.querySelector(`#file_button_container`);
-
-        element.style.border = "2px solid #CB3D40";
-        element2.style.outline = "1px solid #CB3D40";
+        element.style.border = "1px solid #CB3D40";
         element2.style.border = "1px solid #CB3D40";
-
         return <span id='error_text' className={s.photo_error}>{errors.photo.message}</span>
     }
 
@@ -173,51 +167,64 @@ function NewUserForm(props) {
                     }}
                 />
             </div>
-            <RadioGroup>
-                <div className={s.radioGroup_name}>Select your position</div>
+            <RadioGroup
+                {...register('position_id', registerOptions.position_id)}>
+                {errors?.position_id
+                    ? (
+                        <Typography color="error" sx={{ fontFamily: 'Nunito-regular' }}>
+                            Select your position
+                        </Typography>
+                    )
+                    : <div>
+                        Select your position
+                    </div>}
+
+
                 {mapPositions}
             </RadioGroup>
-            {errors.position_id && <p>{errors.position_id.message}</p>}
 
-            <div id="file_container" className={s.custom_file_container}>
-                <input
-                    hidden
-                    accept=".jpg,.jpeg"
-                    id="photo"
-                    type="file"
-                    {...register("photo", {
-                        required: "Photo is required",
-                    })}
-                    onChange={handleFileInputChange}
-                />
-                <label className={s.custom_file_upload} htmlFor="photo">
-                    <Button component="span" id='file_button_container'
-                        sx={{
-                            height: '56px',
-                            width: '86px',
-                            color: 'rgba(0, 0, 0, 0.87)',
-                            textTransform: 'none',
-                            fontFamily: 'Nunito-Regular',
-                            fontStyle: 'normal',
-                            fontWeight: '400',
-                            fontSize: '16px',
-                            lineHeight: '26px',
-                            borderRadius: '4px 0 0 4px',
-                            top: '1px',
-                            border: '1px solid rgba(0, 0, 0, 0.87)'
-                        }}>
-                        {"Upload"}
-                    </Button>
-                </label>
-                <span id="file-name" className={s.custom_file_name}>
-                    {selectedFile
-                        ? selectedFile.name
-                        : "Upload your photo"}
-                    {selectedFile && fileErrorHide()}
-                </span>
+            <div className={s.p_50}>
+                <div id="file_container" className={s.custom_file_container}>
+                    <input
+                        hidden
+                        accept=".jpg,.jpeg"
+                        id="photo"
+                        type="file"
+                        {...register("photo", {
+                            required: "Photo is required",
+                        })}
+                        onChange={handleFileInputChange}
+                    />
+                    <label className={s.custom_file_upload} htmlFor="photo">
+                        <Button component="span" id='file_button_container'
+                            sx={{
+                                height: '56px',
+                                width: '86px',
+                                color: 'rgba(0, 0, 0, 0.87)',
+                                textTransform: 'none',
+                                fontFamily: 'Nunito-Regular',
+                                fontStyle: 'normal',
+                                fontWeight: '400',
+                                fontSize: '16px',
+                                lineHeight: '26px',
+                                borderRadius: '4px 0 0 4px',
+                                top: '1px',
+                                border: '1px solid rgba(0, 0, 0, 0.87)'
+                            }}>
+                            {"Upload"}
+                        </Button>
+                    </label>
+                    <span id="file-name" className={s.custom_file_name}>
+                        {selectedFile
+                            ? selectedFile.name
+                            : "Upload your photo"}
+                        {selectedFile && fileErrorHide()}
+                    </span>
 
+                </div>
+                {!!errors?.photo && !selectedFile && fileErrorShow()}
             </div>
-            {errors?.photo && !selectedFile && fileErrorShow()}
+
 
 
 

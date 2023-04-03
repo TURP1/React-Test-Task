@@ -14,7 +14,7 @@
 }
 
 .p_50 {
-  padding: 50px;
+  padding: 50px 0;
 }
 
 .input_main {
@@ -33,13 +33,19 @@
   line-height: 26px;
 }
 
+.radioGroup_name_error {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #CB3D40; ;
+}
+
 /* Input type File */
 .custom_file_container {
   display: flex;
   height: 54px;
   border-radius: 4px;
   font-size: 16px;
-  margin: 50px 0;
   line-height: 26px;
   margin-bottom: 4px;
   border: 1px #D0CFCF solid;
