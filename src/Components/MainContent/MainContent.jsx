@@ -1,5 +1,5 @@
 import ButtonYellow from "../../Common/Button";
-import img from "../../assets/mainPhoto.png"
+import img from "../../assets/mainPhoto.jpeg"
 import s from "./MainContent.module.css"
 
 
