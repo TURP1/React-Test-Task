@@ -1,28 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import s from "./NewUserForm.module.css";
 import { useRef } from "react";
 import ButtonYellow from "../../../Common/Button"
-
-import { FormControlLabel, Radio, RadioGroup, TextField } from '@mui/material';
-import { all } from 'axios';
-
+import { Button, FormControlLabel, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 
 
 
 export const registerOptions = {
     name: {
-        required: "Name is Required",
+        required: "Name is required",
         minLength: { value: 2, message: "Name must contain at least 2 symbols " },
         maxLength: { value: 20, message: "Name must not exceed 20 symbols" }
     },
     email: {
-        required: "Email is Required",
+        required: "Email is required",
         min: { value: 8, message: "Name must contain at least 8 symbols " },
         maxLength: { value: 15, message: "Email must not exceed 15 symbols" }
     },
     phone: {
-        required: "Phone number is Required",
+        required: "Phone number is required",
         pattern: { value: /^\+?3?8?(0\d{9})$/i, message: "Wrong phone number" }
     },
     position_id: {
@@ -38,123 +35,205 @@ export const registerOptions = {
 
 function NewUserForm(props) {
 
+    const [selectedFile, setSelectedFile] = useState(null);
     const {
         register,
         handleSubmit,
-        formState: { errors }
+        formState: { errors },
     } = useForm();
 
 
-    const onSubmit = async (data) => {
-        let formData = new FormData();
-        for (const key in data) {
-            if (data.hasOwnProperty(key)) {
-                formData.append(key, data[key]);
-            }
-            console.log(formData);
-
-
-
-
-
-            const handleFileInputChange = (event) => {
-                const file = event.target.files[0];
-                const fileName = file ? file.name : "";
-                document.getElementById("file-name").textContent = fileName;
-            };
-
-
-            let positionStore = props.positions || [{ id: 1, name: "free" }];
-
-            let mapPositions = positionStore.map(position => (
-                <FormControlLabel
-                    key={position.id}
-                    value={position.id.toString()}
-                    error={errors.position_id}
-                    control={
-                        <Radio
-                            sx={{
-                                color: "#D0CFCF",
-                                '&.Mui-checked': {
-                                    color: "#00BDD3",
-                                },
-                            }}
-                            size="small"
-                            {...register('position_id')}
-                        />}
-                    label={position.name}
-                />
-            ))
-
-            return (
-                <form onSubmit={handleSubmit(onSubmit)} className={s.user_form}>
-                    <div className={s.padding_top_50}>
-                        <TextField
-                            type="text"
-                            label="Your name"
-                            variant="outlined"
-                            error={!!errors.name}
-                            helperText={errors?.name?.message}
-                            {...register("name", registerOptions.name)}
-                        />
-
-                        <TextField
-                            type="text"
-                            label="Email"
-                            variant="outlined"
-                            error={!!errors.email}
-                            helperText={errors?.email?.message}
-                            {...register("email", registerOptions.email)}
-                        />
-
-                        <TextField
-                            type="tel"
-                            label="Phone"
-                            variant="outlined"
-                            error={!!errors.phone}
-                            helperText="+38 (XXX) XXX - XX - XX"
-                            {...register("phone", registerOptions.phone)}
-                        />
-
-                        <RadioGroup >
-                            {mapPositions}
-                        </RadioGroup>
-                        {errors.position_id && <p>{errors.position_id.message}</p>}
-
-                        <div className={s.custom_file_container}>
-                            <label htmlFor="file-upload" className={s.custom_file_upload} >
-                                <i className="fas fa-cloud-upload-alt"></i>Upload
-                            </label>
-                            <input
-                                type="file"
-                                accept=".jpg,.jpeg,.png"
-                                id="file-upload"
-                                {...register("photo", registerOptions.photo)}
-                                className={s.hide}
-                                onChange={handleFileInputChange}
-
-                            />
-                            <span id="file-name" className={s.custom_file_name}></span>
-                            {errors?.photo && errors.photo.message}
-                        </div>
-
-                    </div>
-
-
-
-
-                    {/* {errors
-                ? <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" state="disabled" ></ButtonYellow> */}
-                    {<ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" ></ButtonYellow>
-                    }
-
-                </form>
-            );
-
-        }
+    const onSubmit = data => {
+        console.log({ ...data, photo: selectedFile });
+        console.log("rerender");
     }
+
+
+
+    const handleFileInputChange = (event) => {
+        const file = event.target.files[0];
+        setSelectedFile(file);
+        const fileName = file ? file.name : "Upload your photo";
+        document.getElementById("file-name").textContent = fileName;
+    };
+
+
+    let positionStore = props.positions || [{ id: 1, name: "free" }];
+
+    let mapPositions = positionStore.map(position => (
+        <FormControlLabel
+            key={position.id}
+            value={position.id.toString()}
+            error={errors.position_id}
+            control={
+                <Radio
+                    sx={{
+                        color: "#D0CFCF",
+                        '&.Mui-checked': {
+                            color: "#00BDD3",
+                        },
+                    }}
+                    size="small"
+                    {...register('position_id')}
+                />}
+            label={
+                <Typography
+                    sx={{
+                        fontFamily: "Nunito-regular", // Change the font-family here
+                    }}
+                >
+                    {position.name}
+                </Typography>
+            }
+        />
+    ))
+
+    let fileErrorHide = () => {
+        let element = document.querySelector(`#file_container`);
+        let element2 = document.querySelector(`#file_button_container`);
+        element.style.border = "1px solid #D0CFCF";
+        element2.style.outline = "none";
+        element2.style.border = "1px solid rgba(0, 0, 0, 0.87)";
+
+
+
+
+    }
+
+    let fileErrorShow = () => {
+        let element = document.querySelector(`#file_container`);
+        let element2 = document.querySelector(`#file_button_container`);
+
+        element.style.border = "2px solid #CB3D40";
+        element2.style.outline = "1px solid #CB3D40";
+        element2.style.border = "1px solid #CB3D40";
+
+        return <span id='error_text' className={s.photo_error}>{errors.photo.message}</span>
+    }
+
+
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)} className={s.user_form}>
+            <div className={s.flex_gap_50}>
+                <TextField
+                    type="text"
+                    label="Your name"
+                    variant="outlined"
+                    error={!!errors.name}
+                    helperText={errors?.name?.message}
+                    {...register("name", registerOptions.name)}
+                    InputLabelProps={{
+                        sx: {
+                            fontFamily: "Nunito-regular",
+                            color: "#7E7E7E",
+                            fontSize: '16px',
+                        },
+                    }}
+                />
+
+                <TextField
+                    type="text"
+                    label="Email"
+                    variant="outlined"
+                    error={!!errors.email}
+                    helperText={errors?.email?.message}
+                    {...register("email", registerOptions.email)}
+                    InputLabelProps={{
+                        sx: {
+                            fontFamily: "Nunito-regular",
+                            color: "#7E7E7E",
+                            fontSize: '16px',
+                        },
+                    }}
+                />
+
+                <TextField
+                    type="tel"
+                    label="Phone"
+                    variant="outlined"
+                    error={!!errors.phone}
+                    helperText="+38 (XXX) XXX - XX - XX"
+                    {...register("phone", registerOptions.phone)}
+                    InputLabelProps={{
+                        sx: {
+                            fontFamily: "Nunito-regular",
+                            color: "#7E7E7E",
+                            fontSize: '16px',
+                        },
+                    }}
+                    sx={{
+                        '& .MuiFormHelperText-root': {
+                            color: '#7E7E7E',
+                            fontSize: '12px',
+                            fontFamily: 'Nunito-regular',
+                            lineHeight: '14px',
+                            margin: '4px 0px 0px 14px'
+                        },
+                    }}
+                />
+            </div>
+            <RadioGroup>
+                <div className={s.radioGroup_name}>Select your position</div>
+                {mapPositions}
+            </RadioGroup>
+            {errors.position_id && <p>{errors.position_id.message}</p>}
+
+            <div id="file_container" className={s.custom_file_container}>
+                <input
+                    hidden
+                    accept=".jpg,.jpeg"
+                    id="photo"
+                    type="file"
+                    {...register("photo", {
+                        required: "Photo is required",
+                    })}
+                    onChange={handleFileInputChange}
+                />
+                <label className={s.custom_file_upload} htmlFor="photo">
+                    <Button component="span" id='file_button_container'
+                        sx={{
+                            height: '56px',
+                            width: '86px',
+                            color: 'rgba(0, 0, 0, 0.87)',
+                            textTransform: 'none',
+                            fontFamily: 'Nunito-Regular',
+                            fontStyle: 'normal',
+                            fontWeight: '400',
+                            fontSize: '16px',
+                            lineHeight: '26px',
+                            borderRadius: '4px 0 0 4px',
+                            top: '1px',
+                            border: '1px solid rgba(0, 0, 0, 0.87)'
+                        }}>
+                        {"Upload"}
+                    </Button>
+                </label>
+                <span id="file-name" className={s.custom_file_name}>
+                    {selectedFile
+                        ? selectedFile.name
+                        : "Upload your photo"}
+                    {selectedFile && fileErrorHide()}
+                </span>
+
+            </div>
+            {errors?.photo && !selectedFile && fileErrorShow()}
+
+
+
+            {/* {errors
+                ? <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" state="disabled" ></ButtonYellow> */}
+            {
+                <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" ></ButtonYellow>
+            }
+
+        </form >
+    );
+
 }
 
 
-    export default NewUserForm;
+
+
+export default NewUserForm;
 
