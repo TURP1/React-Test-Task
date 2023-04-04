@@ -6,6 +6,7 @@ const SET_USER_CARDS = "SET_USER_CARDS";
 const SET_NEXT_URL = "SET_NEXT_URL";
 const ADD_USER_CARDS = "ADD_USER_CARDS";
 const SORT_USERS_NEW_FIRST = "SORT_USERS_NEW_FIRST";
+const SET_SECTION_NAME = "SET_SECTION_NAME";
 
 
 
@@ -18,7 +19,8 @@ let initialState = {
     photo: null,
     id: null,
     userCards: null,
-    nextUrl: null
+    nextUrl: null,
+    sectionName: "Working with POST request"
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -59,6 +61,12 @@ const profileReducer = (state = initialState, action) => {
                 nextUrl: action.nextUrl
             }
         }
+        case SET_SECTION_NAME: {
+            return {
+                ...state,
+                sectionName: action.name
+            }
+        }
         default:
             return state;
     }
@@ -71,6 +79,7 @@ const setNextUrl = (nextUrl) => ({ type: SET_NEXT_URL, nextUrl });
 const addUserCards = (userCards) => ({ type: ADD_USER_CARDS, userCards });
 
 export const sortUsersNewFirst = () => ({ type: SORT_USERS_NEW_FIRST });
+export const setSectionName = (name) => ({ type: SET_SECTION_NAME, name });
 
 
 export const getToken = () => {

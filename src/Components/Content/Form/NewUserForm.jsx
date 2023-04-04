@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import successImg from '../../../assets/success-image.svg'
 import s from "./NewUserForm.module.css";
-import { useRef } from "react";
-import ButtonYellow from "../../../Common/Button"
+import ButtonYellow from "../../../Common/Button";
 import { Button, FormControlLabel, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 
 
@@ -36,7 +36,7 @@ export const registerOptions = {
 function NewUserForm(props) {
 
     const [selectedFile, setSelectedFile] = useState(null);
-
+    const [accept, setSubmit] = useState(false);
 
     const {
         register,
@@ -47,6 +47,8 @@ function NewUserForm(props) {
 
     const onSubmit = data => {
         console.log({ ...data, photo: selectedFile });
+        // after success
+        setSubmit(true);
         console.log("rerender");
     }
 
@@ -106,8 +108,22 @@ function NewUserForm(props) {
     }
 
 
+    if (accept) {
+        props.setSectionName('User successfully registered')
+        return (
+            <>
+                <div className={s.user_form}>
+                    <img className={s.success_img} src={successImg} alt="registration-success" />
+                </div>
+                <div className={s.success_line}></div>
+                <div className={s.success_footer}>
+                © abz.agency specially for the test task
+                </div>
+            </>
 
-    return (
+        )
+    }
+    else return (
         <form onSubmit={handleSubmit(onSubmit)} className={s.user_form}>
             <div className={s.flex_gap_50}>
                 <TextField
@@ -182,7 +198,7 @@ function NewUserForm(props) {
 
                 {mapPositions}
             </RadioGroup>
-
+            {/* Custom File Input */}
             <div className={s.p_50}>
                 <div id="file_container" className={s.custom_file_container}>
                     <input
@@ -224,6 +240,7 @@ function NewUserForm(props) {
                 </div>
                 {!!errors?.photo && !selectedFile && fileErrorShow()}
             </div>
+
 
 
 

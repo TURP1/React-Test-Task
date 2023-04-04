@@ -3,6 +3,7 @@
   flex-direction: column;
   max-width: 380px;
   margin: 0 auto;
+  padding: 0 15px;
 
 }
 
@@ -91,4 +92,20 @@
   #CB3D40;
   font-size: 12px;
   padding-left: 14px;
+}
+
+.success_img{
+  padding-top: 50px;
+  padding-bottom: 100px;
+  max-width: 320px;
+}
+
+.success_line{
+  border: 1px solid #D0CFCF;
+  width: 100%;
+}
+
+.success_footer{
+  padding: 17px 0;
+  font-size: 16px;
 }
