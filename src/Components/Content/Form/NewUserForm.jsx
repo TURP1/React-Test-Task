@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import successImg from '../../../assets/success-image.svg'
 import s from "./NewUserForm.module.css";
@@ -44,6 +44,11 @@ function NewUserForm(props) {
         formState: { errors },
     } = useForm();
 
+    useEffect(() => {
+        if (accept) {
+            props.setSectionName('User successfully registered');
+        }
+    }, [accept]);
 
     const onSubmit = data => {
         console.log({ ...data, photo: selectedFile });
@@ -60,6 +65,8 @@ function NewUserForm(props) {
         setSelectedFile(file);
         const fileName = file ? file.name : "Upload your photo";
         document.getElementById("file-name").textContent = fileName;
+        delete errors.photo
+
     };
 
 
@@ -107,9 +114,7 @@ function NewUserForm(props) {
         return <span id='error_text' className={s.photo_error}>{errors.photo.message}</span>
     }
 
-
     if (accept) {
-        props.setSectionName('User successfully registered')
         return (
             <>
                 <div className={s.user_form}>
@@ -117,7 +122,7 @@ function NewUserForm(props) {
                 </div>
                 <div className={s.success_line}></div>
                 <div className={s.success_footer}>
-                © abz.agency specially for the test task
+                    © abz.agency specially for the test task
                 </div>
             </>
 
@@ -195,7 +200,6 @@ function NewUserForm(props) {
                         Select your position
                     </div>}
 
-
                 {mapPositions}
             </RadioGroup>
             {/* Custom File Input */}
@@ -206,9 +210,7 @@ function NewUserForm(props) {
                         accept=".jpg,.jpeg"
                         id="photo"
                         type="file"
-                        {...register("photo", {
-                            required: "Photo is required",
-                        })}
+                        {...register("photo", registerOptions.photo)}
                         onChange={handleFileInputChange}
                     />
                     <label className={s.custom_file_upload} htmlFor="photo">
@@ -236,19 +238,15 @@ function NewUserForm(props) {
                             : "Upload your photo"}
                         {selectedFile && fileErrorHide()}
                     </span>
-
                 </div>
                 {!!errors?.photo && !selectedFile && fileErrorShow()}
             </div>
 
+            {console.log(Object.keys(errors).length)}
+            {(Object.keys(errors).length === 0)
+                ? <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" ></ButtonYellow>
+                : <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" state="disabled" ></ButtonYellow>
 
-
-
-
-            {/* {errors
-                ? <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" state="disabled" ></ButtonYellow> */}
-            {
-                <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" ></ButtonYellow>
             }
 
         </form >
