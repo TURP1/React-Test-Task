@@ -1,4 +1,4 @@
-import { authAPI, profileAPI } from "../API/api";
+import { authAPI, loginAPI, profileAPI } from "../API/api";
 
 const SET_TOKEN = "SET_TOKEN";
 const SET_POSITIONS = "SET_POSITIONS";
@@ -88,7 +88,6 @@ export const getToken = () => {
         if (response.data.resultCode !== 1) {
             console.log(response);
             dispatch(setToken(response.data.token));
-
         };
     };
 }
@@ -99,7 +98,6 @@ export const getPositions = () => {
         if (response.data.resultCode !== 1) {
             console.log(response.data.positions);
             dispatch(setPositions(response.data.positions));
-
         };
     };
 }
@@ -129,9 +127,17 @@ export const getNewUserCards = (url) => {
             else {
                 dispatch(setNextUrl("Done"));
                 dispatch(sortUsersNewFirst());
-
             }
+        }
+    };
+};
 
+export const registerUser = (loginObj) => {
+    return async () => {
+        let response = await loginAPI.loginMe(loginObj)
+        if (response.status === 200) {
+            console.log(response.data);
+            getUserCards(1, 6);
         }
     };
 };

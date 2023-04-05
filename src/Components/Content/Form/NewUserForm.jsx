@@ -20,7 +20,7 @@ export const registerOptions = {
     },
     phone: {
         required: "Phone number is required",
-        pattern: { value: /^\+?3?8?(0\d{9})$/i, message: "Wrong phone number" }
+        pattern: { value: /^[\+]{0,1}380([0-9]{9})$/, message: "Wrong phone number" }
     },
     position_id: {
         required: "Choose your position"
@@ -51,8 +51,26 @@ function NewUserForm(props) {
     }, [accept]);
 
     const onSubmit = data => {
-        console.log({ ...data, photo: selectedFile });
+        console.log({
+            token: props.token,
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            position_id: data.position_id,
+            photo: selectedFile
+        });
+
+        // token, name, email, phone, position_id, photo
+        props.registerUser({
+            token: props.token,
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            position_id: data.position_id,
+            photo: selectedFile
+        })
         // after success
+
         setSubmit(true);
         console.log("rerender");
     }
@@ -65,8 +83,7 @@ function NewUserForm(props) {
         setSelectedFile(file);
         const fileName = file ? file.name : "Upload your photo";
         document.getElementById("file-name").textContent = fileName;
-        delete errors.photo
-
+        delete errors.photo;
     };
 
 
@@ -146,7 +163,6 @@ function NewUserForm(props) {
                         },
                     }}
                 />
-
                 <TextField
                     type="text"
                     label="Email"
@@ -162,7 +178,6 @@ function NewUserForm(props) {
                         },
                     }}
                 />
-
                 <TextField
                     type="tel"
                     label="Phone"
@@ -246,12 +261,9 @@ function NewUserForm(props) {
             {(Object.keys(errors).length === 0)
                 ? <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" ></ButtonYellow>
                 : <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" state="disabled" ></ButtonYellow>
-
             }
-
         </form >
     );
-
 }
 
 
