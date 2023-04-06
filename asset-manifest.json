@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/React-Test-Task/static/css/main.1381346f.css",
-    "main.js": "/React-Test-Task/static/js/main.8c390897.js",
+    "main.js": "/React-Test-Task/static/js/main.e3ab872d.js",
     "static/js/787.28cb0dcd.chunk.js": "/React-Test-Task/static/js/787.28cb0dcd.chunk.js",
     "static/media/mainPhoto.jpeg": "/React-Test-Task/static/media/mainPhoto.be7665f876bbd9138501.jpeg",
     "static/media/Nunito-Regular.ttf": "/React-Test-Task/static/media/Nunito-Regular.99a3b019e7727ac19479.ttf",
@@ -10,11 +10,11 @@
     "static/media/photo-cover.svg": "/React-Test-Task/static/media/photo-cover.fb98cf13a87225efe558669bdc541ac7.svg",
     "index.html": "/React-Test-Task/index.html",
     "main.1381346f.css.map": "/React-Test-Task/static/css/main.1381346f.css.map",
-    "main.8c390897.js.map": "/React-Test-Task/static/js/main.8c390897.js.map",
+    "main.e3ab872d.js.map": "/React-Test-Task/static/js/main.e3ab872d.js.map",
     "787.28cb0dcd.chunk.js.map": "/React-Test-Task/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1381346f.css",
-    "static/js/main.8c390897.js"
+    "static/js/main.e3ab872d.js"
   ]
 }
