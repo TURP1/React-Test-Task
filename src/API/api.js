@@ -15,36 +15,20 @@ export const authAPI = {
 
 export const loginAPI = {
     loginMe(loginObj) {
-        let { token, name, email, phone, position_id, photo } = loginObj;
-        // console.log({
-        //     headers:
-        //         { 'Token': token }
-        // },
-        // {
-        //     "name": name,
-        //     "email": email,
-        //     "phone": +phone,
-        //     "position_id": position_id,
-        //     "photo": photo
-        // });
-        return instance.post(`/users`,
-            {
-                "name": name,
-                "email": email,
-                "phone": +phone,
-                "position_id": position_id,
-                "photo": photo
-            },
-            {
-                headers: {
-                    'token': token,
-                    'Access-Control-Allow-Origin': 'https://turp1.github.io/React-Test-Task/',
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Token',
-                    'Access-Control-Allow-Credentials': 'true'
-                }
+        let { token, data } = loginObj;
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('email', data.email);
+        formData.append('phone', data.phone);
+        formData.append('position_id', data.position_id);
+        formData.append('photo', data.photo);
+
+        return instance.post(`/users`, formData, {
+            headers: {
+                'Token': token,
+                'Content-Type': 'multipart/form-data',
             }
-        )
+        })
     },
 };
 

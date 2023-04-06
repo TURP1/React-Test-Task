@@ -51,24 +51,21 @@ function NewUserForm(props) {
     }, [accept]);
 
     const onSubmit = data => {
+        data.photo = selectedFile;
+        data.position_id = Number(data.position_id);
         console.log({
-            token: props.token,
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            position_id: data.position_id,
-            photo: selectedFile
+            data
         });
 
         // token, name, email, phone, position_id, photo
-        props.registerUser({
-            token: props.token,
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            position_id: data.position_id,
-            photo: selectedFile
-        })
+        try {
+            props.registerUser({
+                token: props.token,
+                data
+            })
+        } catch (error) {
+            console.log(error);
+        }
         // after success
 
         setSubmit(true);
