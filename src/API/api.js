@@ -27,7 +27,7 @@ export const loginAPI = {
         //     "position_id": position_id,
         //     "photo": photo
         // });
-        return instance.post(`auth/login`,
+        return instance.post(`/users`,
             {
                 "name": name,
                 "email": email,
@@ -38,7 +38,7 @@ export const loginAPI = {
             {
                 headers: {
                     'token': token,
-                    'Access-Control-Allow-Origin': 'http://your-web-application-domain.com',
+                    'Access-Control-Allow-Origin': 'https://turp1.github.io/React-Test-Task/',
                     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Token',
                     'Access-Control-Allow-Credentials': 'true'
