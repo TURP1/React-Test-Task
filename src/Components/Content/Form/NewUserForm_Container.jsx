@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import NewUserForm from './NewUserForm';
-import { getToken, getPositions, setSectionName, registerUser } from '../../../Redux/profile_reducer';
+import { getToken, getPositions, setSectionName, registerUser, getUserCards } from '../../../Redux/profile_reducer';
 
 let emailPattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
@@ -17,7 +17,7 @@ function NewUserFormContainer(props) {
         <NewUserForm
             setSectionName={props.setSectionName} token={props.token}
             emailPattern={emailPattern} positions={props.positions}
-            registerUser={props.registerUser}>
+            registerUser={props.registerUser} getUserCards={props.getUserCards}>
         </NewUserForm>
     );
 
@@ -31,7 +31,7 @@ let mapStateToProps = (state) => {
 };
 
 let NewUserFormContainerConnected = connect(
-    mapStateToProps, { getToken, getPositions, setSectionName, registerUser })
+    mapStateToProps, { getToken, getPositions, setSectionName, registerUser, getUserCards })
     (NewUserFormContainer)
 export default NewUserFormContainerConnected
 

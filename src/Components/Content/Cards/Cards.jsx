@@ -13,7 +13,6 @@ function Cards(props) {
     }, []);
 
     function onShowMore(url) {
-        console.log(url);
         props.getNewUserCards(url)
 
     }

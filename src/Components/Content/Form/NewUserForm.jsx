@@ -6,6 +6,9 @@ import ButtonYellow from "../../../Common/Button";
 import { Button, FormControlLabel, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 
 
+const emailPattern = /^(?:(?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/i;
+const phonePattern = /^[\+]{0,1}380([0-9]{9})$/
+
 
 export const registerOptions = {
     name: {
@@ -16,11 +19,12 @@ export const registerOptions = {
     email: {
         required: "Email is required",
         min: { value: 8, message: "Name must contain at least 8 symbols " },
-        maxLength: { value: 15, message: "Email must not exceed 15 symbols" }
+        pattern: { value: emailPattern, message: "Wrong email" },
+        maxLength: { value: 100, message: "Email must not exceed 100 symbols" }
     },
     phone: {
         required: "Phone number is required",
-        pattern: { value: /^[\+]{0,1}380([0-9]{9})$/, message: "Wrong phone number" }
+        pattern: { value: phonePattern, message: "Wrong phone number" }
     },
     position_id: {
         required: "Choose your position"
@@ -42,6 +46,7 @@ function NewUserForm(props) {
         register,
         handleSubmit,
         formState: { errors },
+        setError,
     } = useForm();
 
     useEffect(() => {
@@ -53,27 +58,28 @@ function NewUserForm(props) {
     const onSubmit = data => {
         data.photo = selectedFile;
         data.position_id = Number(data.position_id);
-        console.log({
-            data
-        });
 
-        // token, name, email, phone, position_id, photo
-        try {
-            props.registerUser({
+        props.
+            registerUser({
                 token: props.token,
                 data
             })
-        } catch (error) {
-            console.log(error);
-        }
-        // after success
+            .then(() => {
+                setSubmit(true);
+                props.getUserCards(1, 6)
+            })
 
-        setSubmit(true);
-        console.log("rerender");
+            .catch(error => {
+                if (error.response.data.fails.email) {
+                    let fails = error.response.data.fails;
+                    setError("email", { message: fails.email[0] });
+                }
+                alert(error)
+
+
+
+            })
     }
-
-    console.log(errors);
-
 
     const handleFileInputChange = (event) => {
         const file = event.target.files[0];
@@ -254,7 +260,6 @@ function NewUserForm(props) {
                 {!!errors?.photo && !selectedFile && fileErrorShow()}
             </div>
 
-            {console.log(Object.keys(errors).length)}
             {(Object.keys(errors).length === 0)
                 ? <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" ></ButtonYellow>
                 : <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" state="disabled" ></ButtonYellow>

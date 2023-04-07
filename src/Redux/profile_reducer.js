@@ -86,7 +86,6 @@ export const getToken = () => {
     return async (dispatch) => {
         let response = await authAPI.getToken()
         if (response.data.resultCode !== 1) {
-            console.log(response);
             dispatch(setToken(response.data.token));
         };
     };
@@ -96,7 +95,6 @@ export const getPositions = () => {
     return async (dispatch) => {
         let response = await authAPI.getPositions()
         if (response.data.resultCode !== 1) {
-            console.log(response.data.positions);
             dispatch(setPositions(response.data.positions));
         };
     };
@@ -106,7 +104,6 @@ export const getUserCards = (page, count) => {
     return async (dispatch) => {
         let response = await profileAPI.getUserList(page, count)
         if (response.status === 200) {
-            console.log(response.data.users);
             dispatch(setUserCards(response.data.users));
             if (response.data.links.next_url) {
                 dispatch(setNextUrl(response.data.links.next_url));
@@ -119,7 +116,6 @@ export const getNewUserCards = (url) => {
     return async (dispatch) => {
         let response = await profileAPI.getNewUserList(url)
         if (response.status === 200) {
-            console.log(response.data.users);
             dispatch(addUserCards(response.data.users));
             if (response.data.links.next_url) {
                 dispatch(setNextUrl(response.data.links.next_url))
@@ -136,7 +132,6 @@ export const registerUser = (loginObj) => {
     return async () => {
         let response = await loginAPI.loginMe(loginObj)
         if (response.status === 200) {
-            console.log(response.data);
             getUserCards(1, 6);
         }
     };
