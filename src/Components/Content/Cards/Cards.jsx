@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import ButtonYellow from "../../../Common/Button";
 import { getUserCards, getNewUserCards } from "../../../Redux/profile_reducer";
 import photoCover from "../../../assets/photo-cover.svg"
 import s from "./Cards.module.css";
+import ButtonShowMore from "../../../Common/Buttons/ButtonShowMore";
 
 function Cards(props) {
 
@@ -56,7 +56,7 @@ function Cards(props) {
         if (props.nextUrl !== "Done") {
             return (
                 <div onClick={() => { onShowMore(props.nextUrl) }}>
-                    <ButtonYellow buttonName="Show more"></ButtonYellow>
+                    <ButtonShowMore buttonName="Show more"></ButtonShowMore>
                 </div>
             )
         } else {
@@ -69,6 +69,7 @@ function Cards(props) {
             {mapUserList}
         </div>
         {showMoreButton()}
+        <div id="scrollTO"></div>
 
     </div>
 

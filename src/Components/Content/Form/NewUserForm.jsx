@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import successImg from '../../../assets/success-image.svg'
 import s from "./NewUserForm.module.css";
-import ButtonYellow from "../../../Common/Button";
+import ButtonYellow from "../../../Common/Buttons/Button";
 import { Button, FormControlLabel, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 
 
@@ -259,7 +259,6 @@ function NewUserForm(props) {
                 </div>
                 {!!errors?.photo && !selectedFile && fileErrorShow()}
             </div>
-
             {(Object.keys(errors).length === 0)
                 ? <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" ></ButtonYellow>
                 : <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" state="disabled" ></ButtonYellow>

@@ -12,11 +12,11 @@ function Content(props) {
 
     return (
         <div className={s.content}>
-            <section>
+            <section id="users">
                 <SectionHeader section_name="Working with GET request"></SectionHeader>
                 <CardsContainer></CardsContainer>
             </section>
-            <section>
+            <section id="register">
                 <SectionHeader section_name={props.section_name}></SectionHeader>
                 <NewUserFormContainerConnected></NewUserFormContainerConnected>
             </section>

@@ -1,6 +1,6 @@
-import ButtonYellow from "../../Common/Button";
 import Logo from "./Logo";
 import s from "./Header.module.css"
+import ButtonYellowAnchor from "../../Common/Buttons/ButtonAnchor";
 
 
 function Header() {
@@ -9,8 +9,8 @@ function Header() {
       <div className={s.app_header}>
       <Logo></Logo>
       <nav className={s.buttons}>
-        <ButtonYellow buttonName="Users"></ButtonYellow>
-        <ButtonYellow buttonName="Sign up"></ButtonYellow>
+        <ButtonYellowAnchor buttonName="Users" anchor="users"></ButtonYellowAnchor>
+        <ButtonYellowAnchor buttonName="Sign up" anchor="register"></ButtonYellowAnchor>
       </nav>
       </div>
       
