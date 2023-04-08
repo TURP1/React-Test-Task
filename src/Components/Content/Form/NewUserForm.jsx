@@ -136,15 +136,16 @@ function NewUserForm(props) {
 
     if (accept) {
         return (
-            <>
-                <div className={s.user_form}>
-                    <img className={s.success_img} src={successImg} alt="registration-success" />
-                </div>
+
+            <div className={s.user_form}>
+                <img className={s.success_img} src={successImg} alt="registration-success" />
+
                 <div className={s.success_line}></div>
                 <div className={s.success_footer}>
                     © abz.agency specially for the test task
                 </div>
-            </>
+            </div>
+
 
         )
     }
