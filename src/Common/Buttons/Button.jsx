@@ -1,9 +1,10 @@
 import s from "./Button.module.css"
 // buttonName="Sign up" type="submit" state="disabled"
 function ButtonYellow(props) {
+
     if (props.type === "submit" && props.state === "disabled") {
         return (
-            <button className={s.yellow_button_disabled + " " + props.className} type={props.type} disabled>
+            <button className={s.yellow_button_disabled + " " + s.yellow_button} type={props.type} disabled>
                 <span className={s.typography}>
                     {props.buttonName}
                 </span>
@@ -14,7 +15,7 @@ function ButtonYellow(props) {
 
     else if (props.type === "submit" && props.state !== "disabled") {
         return (
-            <button className={s.yellow_button + " " + props.className} type={props.type}>
+            <button className={s.yellow_button} type={props.type}>
                 <span className={s.typography}>
                     {props.buttonName}
                 </span>

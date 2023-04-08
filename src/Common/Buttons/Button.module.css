@@ -6,12 +6,16 @@
     border: none;
     border-radius: 80px;
     margin-left: 10px;
+    color:  rgba(0, 0, 0, 0.87);
+    font-size: 16px;
+    line-height: 26px;
 
 }
 
 .typography {
     font-size: 16px;
     line-height: 26px;
+    font-weight: 400;
 }
 
 .yellow_button:hover {
@@ -21,12 +25,11 @@
 
 .yellow_button_disabled {
     background-color: #B4B4B4;
-    width: 100px;
-    height: 34px;
-    border: none;
-    border-radius: 80px;
+    color: rgba(255, 255, 255, 0.87);
+}
 
-
+.yellow_button_disabled:hover{
+    background-color: #B4B4B4;
     color: rgba(255, 255, 255, 0.87);
 }
 .mb50{

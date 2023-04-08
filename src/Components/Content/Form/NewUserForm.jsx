@@ -260,8 +260,14 @@ function NewUserForm(props) {
                 {!!errors?.photo && !selectedFile && fileErrorShow()}
             </div>
             {(Object.keys(errors).length === 0)
-                ? <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" ></ButtonYellow>
-                : <ButtonYellow className={s.submit_btn} buttonName="Sign up" type="submit" state="disabled" ></ButtonYellow>
+                ? <div className={s.submit_btn}>
+                    <ButtonYellow buttonName="Sign up" type="submit" ></ButtonYellow>
+                </div>
+
+                : <div className={s.submit_btn}>
+                    <ButtonYellow buttonName="Sign up" type="submit" state="disabled" ></ButtonYellow>
+                </div>
+
             }
         </form >
     );
