@@ -4,3 +4,9 @@
 
 [deploy]
   command = "npm run deploy"
+
+[[plugins]]
+  package = "netlify-plugin-cloudinary"
+
+[plugins.inputs]
+  cloudName = "dv0xwgzeo"
