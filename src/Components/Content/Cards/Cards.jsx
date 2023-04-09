@@ -10,7 +10,7 @@ function Cards(props) {
     
     useEffect(() => {
         props.getUserCards(1, 6)
-    }, []);
+    }, [props]);
 
     function onShowMore(url) {
         props.getNewUserCards(url)
