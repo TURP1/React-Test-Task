@@ -38,10 +38,10 @@ function Cards(props) {
                             : <img className={s.card_image} src={photoCover} alt="users_img" />}
 
                         <div className={s.card_name}>
-                            {user.name.length > 30 ? user.name.slice(0, 30) + "..." : user.name}
+                            {user.name.length > 20 ? user.name.slice(0, 20) + "..." : user.name}
                         </div>
                         <div>{user.position}</div>
-                        <div>{user.email.length > 30 ? user.email.slice(0, 30) + "..." : user.email}</div>
+                        <div>{user.email.length > 20 ? user.email.slice(0, 20) + "..." : user.email}</div>
                         <div>{UserPhoneChanger(user.phone)}</div>
                     </div>
 
