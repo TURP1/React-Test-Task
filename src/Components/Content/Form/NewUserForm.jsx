@@ -37,10 +37,11 @@ export const registerOptions = {
 
 
 
-function NewUserForm(props) {
+function NewUserForm({setSectionName, ...props}) {
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [accept, setSubmit] = useState(false);
+
 
     const {
         register,
@@ -51,18 +52,18 @@ function NewUserForm(props) {
 
     useEffect(() => {
         if (accept) {
-            props.setSectionName('User successfully registered');
+            setSectionName('User successfully registered');
         }
-    }, [accept, props]);
+    }, [accept, setSectionName]);
 
     const onSubmit = data => {
         data.photo = selectedFile;
         data.position_id = Number(data.position_id);
 
         props.registerUser({
-                token: props.token,
-                data
-            })
+            token: props.token,
+            data
+        })
             .then(() => {
                 setSubmit(true);
                 props.getUserCards(1, 6)

@@ -5,12 +5,11 @@ import photoCover from "../../../assets/photo-cover.svg"
 import s from "./Cards.module.css";
 import ButtonShowMore from "../../../Common/Buttons/ButtonShowMore";
 
-function Cards(props) {
+function Cards({getUserCards, ...props}) {
 
-    
     useEffect(() => {
-        props.getUserCards(1, 6)
-    }, [props]);
+        getUserCards(1, 6)
+    }, [getUserCards]);
 
     function onShowMore(url) {
         props.getNewUserCards(url)

@@ -7,11 +7,11 @@ let emailPattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]
 
 
 
-function NewUserFormContainer(props) {
+function NewUserFormContainer({ getToken, getPositions, ...props }) {
     useEffect(() => {
-        props.getToken();
-        props.getPositions();
-    }, [props]);
+        getToken();
+        getPositions();
+    }, [getToken, getPositions]);
 
     return (
         <NewUserForm
