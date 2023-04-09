@@ -8,5 +8,7 @@
 [[plugins]]
   package = "netlify-plugin-cloudinary"
 
+
 [plugins.inputs]
   cloudName = "dv0xwgzeo"
+
