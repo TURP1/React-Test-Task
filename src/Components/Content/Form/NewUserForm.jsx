@@ -53,7 +53,7 @@ function NewUserForm(props) {
         if (accept) {
             props.setSectionName('User successfully registered');
         }
-    }, [accept]);
+    }, [accept, props]);
 
     const onSubmit = data => {
         data.photo = selectedFile;

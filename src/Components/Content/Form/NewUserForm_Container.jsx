@@ -11,7 +11,7 @@ function NewUserFormContainer(props) {
     useEffect(() => {
         props.getToken();
         props.getPositions();
-    }, []);
+    }, [props]);
 
     return (
         <NewUserForm
