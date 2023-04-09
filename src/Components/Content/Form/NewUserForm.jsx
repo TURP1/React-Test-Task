@@ -7,7 +7,7 @@ import { Button, FormControlLabel, Radio, RadioGroup, TextField, Typography } fr
 
 
 const emailPattern = /^(?:(?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/i;
-const phonePattern = /^[\+]{0,1}380([0-9]{9})$/;
+const phonePattern = /^(\+)?380([0-9]{9})$/;
 
 
 export const registerOptions = {
