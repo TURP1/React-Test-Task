@@ -11,9 +11,9 @@ function PreloadImage(props) {
     img.onload = () => {
       setLoaded(true);
     };
-  }, [props.src, props.srcSet]);
+  }, [props.src, props.srcSet, props.alt]);
 
-  return loaded ? <img {...props} /> : null;
+  return loaded ? <img {...props} alt={props.alt} /> : null;
 }
 
 export default PreloadImage;
