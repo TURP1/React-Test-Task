@@ -1,19 +1,30 @@
 import ButtonYellowAnchor from "../../Common/Buttons/ButtonAnchor";
-import PreloadImage from "./ImagePreloader";
-import s from "./MainContent.module.css"
+import s from "./MainContent.module.css";
+import { useInView } from 'react-intersection-observer';
 
-const screenSet = "https://res.cloudinary.com/dv0xwgzeo/image/upload/w_400,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 400w,https://res.cloudinary.com/dv0xwgzeo/image/upload/w_600,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 600w,https://res.cloudinary.com/dv0xwgzeo/image/upload/w_800,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 800w,https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1200,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 1200w,https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1600,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 1600w"
 
 function MainContent() {
+    const { ref, inView } = useInView({
+        threshold: 0.5,
+        triggerOnce: true,
+    });
     return (
         <section className={s.main}>
             <div className={s.image_container}>
-                <PreloadImage
+                <img
+                    ref={ref}
                     className={s.main_img}
-                    srcSet={screenSet}
+                    srcSet="
+            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_400,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 400w,
+            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_600,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 600w,
+            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_800,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 800w,
+            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1200,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 1200w,
+            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1600,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 1600w
+          "
                     sizes="(max-width: 800px) 50vw, 100vw"
                     src="https://res.cloudinary.com/dv0xwgzeo/image/upload/v1681122146/React-Test/mainPhoto_mygs5v.jpg.jpg"
                     alt="Main bg"
+                    style={{ opacity: inView ? 1 : 0, transition: "opacity 0.5s" }}
                 />
                 <div className={s.image_text}>
                     <div className={s.image_text_header}>Test assignment for
