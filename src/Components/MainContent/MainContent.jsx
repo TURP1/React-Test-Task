@@ -10,7 +10,7 @@ function MainContent() {
     });
     return (
         <section className={s.main}>
-            <link rel="preload" as="image" href="https://res.cloudinary.com/dv0xwgzeo/image/upload/v1681122146/React-Test/mainPhoto_mygs5v.jpg" type="image/jpeg" />
+            <link rel="preload" as="image" href="https://res.cloudinary.com/dv0xwgzeo/image/upload/w_400,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg" type="image/jpeg" />
 
             <div className={s.image_container}>
                 <img
