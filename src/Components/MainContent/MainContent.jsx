@@ -1,20 +1,17 @@
 import ButtonYellowAnchor from "../../Common/Buttons/ButtonAnchor";
+import PreloadImage from "./ImagePreloader";
 import s from "./MainContent.module.css"
 
+const screenSet = "https://res.cloudinary.com/dv0xwgzeo/image/upload/w_400,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 400w,https://res.cloudinary.com/dv0xwgzeo/image/upload/w_600,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 600w,https://res.cloudinary.com/dv0xwgzeo/image/upload/w_800,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 800w,https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1200,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 1200w,https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1600,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 1600w"
 
 function MainContent() {
     return (
         <section className={s.main}>
             <div className={s.image_container}>
+                <PreloadImage src="https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1200,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg" srcSet={screenSet}/>
                 <img
                     className={s.main_img}
-                    srcSet="
-            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_400,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 400w,
-            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_600,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 600w,
-            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_800,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 800w,
-            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1200,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 1200w,
-            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1600,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 1600w
-          "
+                    srcSet={screenSet}
                     sizes="(max-width: 800px) 50vw, 100vw"
                     src="https://res.cloudinary.com/dv0xwgzeo/image/upload/v1681122146/React-Test/mainPhoto_mygs5v.jpg.jpg"
                     alt="Main bg"
