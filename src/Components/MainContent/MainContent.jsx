@@ -8,8 +8,7 @@ function MainContent() {
     return (
         <section className={s.main}>
             <div className={s.image_container}>
-                <PreloadImage src="https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1200,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg" srcSet={screenSet}/>
-                <img
+                <PreloadImage
                     className={s.main_img}
                     srcSet={screenSet}
                     sizes="(max-width: 800px) 50vw, 100vw"

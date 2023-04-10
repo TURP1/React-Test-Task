@@ -1,13 +1,18 @@
-import { useEffect } from "react";
-
+import { useState, useEffect } from "react";
 
 function PreloadImage(props) {
-    useEffect(() => {
-      const img = new Image();
-      img.src = props.src;
-      img.scrSet = props.srcSet;
-    }, [props.src, props.srcSet]);
-  
-    return null;
-  }
-export default PreloadImage
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = props.src;
+    img.srcset = props.srcSet;
+    img.onload = () => {
+      setLoaded(true);
+    };
+  }, [props.src, props.srcSet]);
+
+  return loaded ? <img {...props} /> : null;
+}
+
+export default PreloadImage;
