@@ -5,6 +5,7 @@ function PreloadImage(props) {
 
   useEffect(() => {
     const img = new Image();
+    img.alt = props.alt
     img.src = props.src;
     img.srcset = props.srcSet;
     img.onload = () => {
