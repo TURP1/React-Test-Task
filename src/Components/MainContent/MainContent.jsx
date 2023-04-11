@@ -10,21 +10,21 @@ function MainContent() {
     });
     return (
         <section className={s.main}>
-            <link rel="preload" as="image" href="https://res.cloudinary.com/dv0xwgzeo/image/upload/w_400,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg" type="image/jpeg" />
+            <link rel="preload" as="image" href="https://res.cloudinary.com/dv0xwgzeo/image/upload/v1681225035/React-Test/lodka_gory_ozero_135258_1920x1080_vasfvu.jpg" type="image/jpeg" />
 
             <div className={s.image_container}>
                 <img
                     ref={ref}
                     className={s.main_img}
                     srcSet="
-            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_400,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 400w,
-            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_600,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 600w,
-            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_800,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 800w,
-            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1200,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 1200w,
-            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1600,c_scale,q_auto,f_auto/v1681122146/React-Test/mainPhoto_mygs5v.jpg 1600w
+            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_400,c_scale,q_auto,f_auto/v1681122146/React-Test/lodka_gory_ozero_135258_1920x1080_vasfvu.jpg 400w,
+            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_600,c_scale,q_auto,f_auto/v1681122146/React-Test/lodka_gory_ozero_135258_1920x1080_vasfvu.jpg 600w,
+            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_800,c_scale,q_auto,f_auto/v1681122146/React-Test/lodka_gory_ozero_135258_1920x1080_vasfvu.jpg 800w,
+            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1200,c_scale,q_auto,f_auto/v1681122146/React-Test/lodka_gory_ozero_135258_1920x1080_vasfvu.jpg 1200w,
+            https://res.cloudinary.com/dv0xwgzeo/image/upload/w_1600,c_scale,q_auto,f_auto/v1681122146/React-Test/lodka_gory_ozero_135258_1920x1080_vasfvu.jpg 1600w
           "
                     sizes="(max-width: 800px) 50vw, 100vw"
-                    src="https://res.cloudinary.com/dv0xwgzeo/image/upload/v1681122146/React-Test/mainPhoto_mygs5v.jpg.jpg"
+                    src="https://res.cloudinary.com/dv0xwgzeo/image/upload/v1681225035/React-Test/lodka_gory_ozero_135258_1920x1080_vasfvu.jpg"
                     alt="Main bg"
                     style={{ opacity: inView ? 1 : 0, transition: "opacity 0.5s" }}
                 />
